@@ -3,19 +3,10 @@ import { TiLocationArrow } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
 import { useLocation } from "react-router-dom";
 import { gamesData } from "../data/gamesData";
-import { premiumGames } from "../data/premiumGames";
+import { getPremiumGamesAvengersFirst } from "../data/premiumGames";
 import { useLanguage } from "../context/LanguageContext";
 
-const shuffleList = (list) => {
-  const next = [...list];
-  for (let i = next.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [next[i], next[j]] = [next[j], next[i]];
-  }
-  return next;
-};
-
-const premiumAsGamesData = shuffleList(premiumGames).map((g) => ({
+const premiumAsGamesData = getPremiumGamesAvengersFirst().map((g) => ({
   name: g.title,
   game_url: g.link,
   thumbnail_url: g.img,

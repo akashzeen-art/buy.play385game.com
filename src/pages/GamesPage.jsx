@@ -6,7 +6,7 @@ import { TiLocationArrow } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
 import AnimatedTitle from "../components/AnimatedTitle";
 import { useLanguage } from "../context/LanguageContext";
-import { premiumGames } from "../data/premiumGames";
+import { getPremiumGamesAvengersFirst } from "../data/premiumGames";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,15 +39,6 @@ const games = [
   { id: 26, img: "https://cdn.simpleviralgames.com/images/7d9b4897-3037-4096-bd4c-611688664ad5.webp", title: "Mega Quest", category: "Action", link: "https://cdn.timepass.games/games/66550db6-b343-4464-b34c-8bbd70119da7/50a48faa-d9af-4264-80d1-b85981c4ccc7/" },
   { id: 27, img: "https://cdn.timepass.games/images/09717a3d-6f4c-4396-ab37-5765173e43d2.webp", title: "Final Strike", category: "Action", link: "https://cdn.timepass.games/games/05cb773c-9b54-4773-aedc-24a42b568584/aee3cd6b-808d-432b-be3d-e0efe6b2f2ee/" },
 ];
-
-const shuffleList = (list) => {
-  const next = [...list];
-  for (let i = next.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [next[i], next[j]] = [next[j], next[i]];
-  }
-  return next;
-};
 
 const GameCard = ({ game, onPlay, premium = false, portrait = false }) => {
   const { t } = useLanguage();
@@ -147,7 +138,7 @@ const GamesPage = () => {
   const [isTablet, setIsTablet] = useState(false);
   const [gameUrl, setGameUrl] = useState(null);
   
-  const [shuffledPremium] = useState(() => shuffleList(premiumGames));
+  const [shuffledPremium] = useState(getPremiumGamesAvengersFirst);
   const sliderGames = games.slice(0, 7);
   const circleGames = games.slice(7, 15);
   const gridGames = games.slice(15, 27);

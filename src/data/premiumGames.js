@@ -469,3 +469,11 @@ export const premiumGames = [
     "category": "Premium"
   }
 ];
+
+const AVENGERS_GAME_IDS = [1001, 1052, 1038];
+
+export const getPremiumGamesAvengersFirst = () => {
+  const avengers = AVENGERS_GAME_IDS.map((id) => premiumGames.find((g) => g.id === id)).filter(Boolean);
+  const rest = premiumGames.filter((g) => !AVENGERS_GAME_IDS.includes(g.id));
+  return [...avengers, ...rest];
+};
