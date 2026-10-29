@@ -77,13 +77,6 @@ export const premiumGames = [
     "category": "Premium"
   },
   {
-    "id": 1012,
-    "title": "CGB - Crash & Bernball",
-    "img": "/thumbnails-square/CGB%20-%20Crash%20and%20Bernball.jpg",
-    "link": "https://htmlgames.play365game.com/C&B%20-%20Crash%20&%20Bernball/",
-    "category": "Premium"
-  },
-  {
     "id": 1013,
     "title": "Dennis & Gnasher Unleashed Clone Ranger",
     "img": "/thumbnails-square/Dennis%20and%20Gnasher%20Unleashed%20Clone%20Ranger.jpg",
@@ -259,13 +252,6 @@ export const premiumGames = [
     "category": "Premium"
   },
   {
-    "id": 1038,
-    "title": "Spider-Man - Mysterio Rush Game",
-    "img": "/thumbnails-square/Spider-Man%20-%20Mysterio%20Rush%20Game.jpg",
-    "link": "https://htmlgames.play365game.com/Spider-Man%20-%20Mysterio%20Rush%20Game/",
-    "category": "Premium"
-  },
-  {
     "id": 1039,
     "title": "SpongeBob SquarePants - Bikini Bottom Mysteries Search",
     "img": "/thumbnails-square/SpongeBob%20SquarePants%20-%20Bikini%20Bottom%20Mysteries%20Search.jpg",
@@ -277,34 +263,6 @@ export const premiumGames = [
     "title": "SpongeBob SquarePants - Which Krabby Patty Are You",
     "img": "/thumbnails-square/SpongeBob%20SquarePants%20-%20Which%20Krabby%20Patty%20Are%20You.jpg",
     "link": "https://htmlgames.play365game.com/SpongeBob%20SquarePants%20-%20Which%20Krabby%20Patty%20Are%20You/",
-    "category": "Premium"
-  },
-  {
-    "id": 1041,
-    "title": "Star Wars Arcade",
-    "img": "/thumbnails-square/Star%20Wars%20Arcade.jpg",
-    "link": "https://htmlgames.play365game.com/Star%20Wars%20Arcade/",
-    "category": "Premium"
-  },
-  {
-    "id": 1042,
-    "title": "Star Wars Rebels - Chopper Chase",
-    "img": "/thumbnails-square/Star%20Wars%20Rebels%20-%20Chopper%20Chase.jpg",
-    "link": "https://htmlgames.play365game.com/Star%20Wars%20Rebels%20-%20Chopper%20Chase/",
-    "category": "Premium"
-  },
-  {
-    "id": 1043,
-    "title": "Star Wars Rebels - Special Ops",
-    "img": "/thumbnails-square/Star%20Wars%20Rebels%20-%20Special%20Ops.jpg",
-    "link": "https://htmlgames.play365game.com/Star%20Wars%20Rebels%20-%20Special%20Ops/",
-    "category": "Premium"
-  },
-  {
-    "id": 1044,
-    "title": "Star Wars Rebels - Team Tactics",
-    "img": "/thumbnails-square/Star%20Wars%20Rebels%20-%20Team%20Tactics.jpg",
-    "link": "https://htmlgames.play365game.com/Star%20Wars%20Rebels%20-%20Team%20Tactics/",
     "category": "Premium"
   },
   {
@@ -354,13 +312,6 @@ export const premiumGames = [
     "title": "The Adventures of Puss in Boots - Catch The Thief",
     "img": "/thumbnails-square/The%20Adventures%20of%20Puss%20in%20Boots%20-%20Catch%20The%20Thief.jpg",
     "link": "https://htmlgames.play365game.com/The%20Adventures%20of%20Puss%20In%20Boots%20-%20Catch%20The%20Thief/",
-    "category": "Premium"
-  },
-  {
-    "id": 1052,
-    "title": "The Incredible Hulk - Chitauri Takedown",
-    "img": "/thumbnails-square/The%20Incredible%20Hulk%20-%20Chitauri%20Takedown.jpg",
-    "link": "https://htmlgames.play365game.com/The%20Incredible%20Hulk%20-%20Chitauri%20Takedown/",
     "category": "Premium"
   },
   {
@@ -455,13 +406,6 @@ export const premiumGames = [
     "category": "Premium"
   },
   {
-    "id": 1066,
-    "title": "Tom and Jerry - River Recycle",
-    "img": "/thumbnails-square/Tom%20and%20Jerry%20-%20River%20Recycle.jpg",
-    "link": "https://htmlgames.play365game.com/Tom%20and%20Jerry%20-%20River%20Recycle/",
-    "category": "Premium"
-  },
-  {
     "id": 1067,
     "title": "X-Wing Fighter",
     "img": "/thumbnails-square/X-Wing%20Fighter.jpg",
@@ -470,7 +414,7 @@ export const premiumGames = [
   }
 ];
 
-const AVENGERS_GAME_IDS = [1001, 1052, 1038];
+const AVENGERS_GAME_IDS = [1001];
 
 export const getPremiumGamesAvengersFirst = () => {
   const avengers = AVENGERS_GAME_IDS.map((id) => premiumGames.find((g) => g.id === id)).filter(Boolean);
