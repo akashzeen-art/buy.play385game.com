@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { gamesData } from "../data/gamesData";
 import { getPremiumGamesAvengersFirst } from "../data/premiumGames";
 import { useLanguage } from "../context/LanguageContext";
+import MobilePopup from "../components/MobilePopup";
 
 const premiumAsGamesData = getPremiumGamesAvengersFirst().map((g) => ({
   name: g.title,
@@ -18,6 +19,8 @@ const CategoriesPage = () => {
   const location = useLocation();
   const [selectedCategory, setSelectedCategory] = useState(location.state?.category || "All Games");
   const [gameUrl, setGameUrl] = useState(null);
+  const [pendingUrl, setPendingUrl] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
   
   const categories = [
     { key: "All Games", label: t.allGames },
@@ -45,8 +48,19 @@ const CategoriesPage = () => {
       : gamesData.filter((game) => game.categories.includes(selectedCategory));
 
   const handlePlay = (url) => {
-    new Audio('/audio/Whoosh.mp3').play();
-    setGameUrl(url);
+    setPendingUrl(url);
+    setShowPopup(true);
+  };
+
+  const handlePopupConfirm = () => {
+    setShowPopup(false);
+    setGameUrl(pendingUrl);
+    setPendingUrl(null);
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    setPendingUrl(null);
   };
 
   const handleClose = () => {
@@ -159,6 +173,10 @@ const CategoriesPage = () => {
           </div>
         </div>
       </div>
+
+      {showPopup && (
+        <MobilePopup onConfirm={handlePopupConfirm} onClose={handlePopupClose} />
+      )}
 
       {gameUrl && (
         <div className="fixed inset-0 z-50 bg-black">

@@ -21,7 +21,7 @@ const Footer = () => {
       <div className="container relative mx-auto px-5 py-14 md:px-10 md:py-16">
         <div className="flex flex-col items-start justify-between gap-10 md:flex-row md:items-end">
           <div className="max-w-md">
-            <img src="/52.png" alt="play365game" className="h-16 w-auto md:h-20" />
+            <img src="/52.png" alt="gamezone365" className="h-16 w-auto md:h-20" />
             <p className="mt-4 font-circular-web text-base text-white/70 md:text-lg">
               {t.gamingHub}
             </p>

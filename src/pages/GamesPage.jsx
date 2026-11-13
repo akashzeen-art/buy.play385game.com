@@ -7,6 +7,7 @@ import { IoMdClose } from "react-icons/io";
 import AnimatedTitle from "../components/AnimatedTitle";
 import { useLanguage } from "../context/LanguageContext";
 import { getPremiumGamesAvengersFirst } from "../data/premiumGames";
+import MobilePopup from "../components/MobilePopup";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -137,11 +138,29 @@ const GamesPage = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
   const [gameUrl, setGameUrl] = useState(null);
-  
+  const [pendingUrl, setPendingUrl] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+
   const [shuffledPremium] = useState(getPremiumGamesAvengersFirst);
   const sliderGames = games.slice(0, 7);
   const circleGames = games.slice(7, 15);
   const gridGames = games.slice(15, 27);
+
+  const handlePlay = (url) => {
+    setPendingUrl(url);
+    setShowPopup(true);
+  };
+
+  const handlePopupConfirm = () => {
+    setShowPopup(false);
+    setGameUrl(pendingUrl);
+    setPendingUrl(null);
+  };
+
+  const handlePopupClose = () => {
+    setShowPopup(false);
+    setPendingUrl(null);
+  };
 
   const handleClose = () => {
     setGameUrl(null);
@@ -216,7 +235,7 @@ const GamesPage = () => {
             <div className="flex gap-4 overflow-x-auto pb-6">
               {sliderGames.map((game) => (
                 <div key={game.id} className="w-[200px] shrink-0 sm:w-[240px] md:w-[280px]">
-                  <GameCard game={game} onPlay={setGameUrl} portrait />
+                  <GameCard game={game} onPlay={handlePlay} portrait />
                 </div>
               ))}
             </div>
@@ -228,7 +247,7 @@ const GamesPage = () => {
             />
             <div className="relative mx-auto flex h-[280px] w-full max-w-[280px] items-center justify-center sm:h-[400px] sm:max-w-[400px] md:h-[550px] md:max-w-[650px]">
               {circleGames.map((game, index) => (
-                <CircleGame key={game.id} game={game} index={index} isMobile={isMobile} isTablet={isTablet} onPlay={setGameUrl} />
+                <CircleGame key={game.id} game={game} index={index} isMobile={isMobile} isTablet={isTablet} onPlay={handlePlay} />
               ))}
               <img src="/220208.gif" alt="center" className="absolute size-20 rounded-full object-cover sm:size-26 md:size-32" />
             </div>
@@ -265,7 +284,7 @@ const GamesPage = () => {
               </div>
               <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-4">
                 {shuffledPremium.map((game) => (
-                  <GameCard key={game.id} game={game} onPlay={setGameUrl} premium />
+                  <GameCard key={game.id} game={game} onPlay={handlePlay} premium />
                 ))}
               </div>
             </div>
@@ -277,12 +296,16 @@ const GamesPage = () => {
             />
             <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3 lg:grid-cols-4">
               {gridGames.map((game) => (
-                <GameCard key={game.id} game={game} onPlay={setGameUrl} portrait />
+                <GameCard key={game.id} game={game} onPlay={handlePlay} portrait />
               ))}
             </div>
           </div>
         </div>
       </div>
+
+      {showPopup && (
+        <MobilePopup onConfirm={handlePopupConfirm} onClose={handlePopupClose} />
+      )}
 
       {gameUrl && (
         <div className="fixed inset-0 z-50 bg-black">
