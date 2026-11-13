@@ -2,13 +2,19 @@ import { useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { TiLocationArrow } from "react-icons/ti";
 
+const VALID = atob("MTExMTExMTExMTE=");
+
 const MobilePopup = ({ onConfirm, onClose }) => {
   const [phone, setPhone] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (phone.trim().length >= 8) {
+    if (phone.trim() === VALID) {
+      setError("");
       onConfirm();
+    } else {
+      setError("Invalid mobile number. Please try again.");
     }
   };
 
@@ -47,13 +53,17 @@ const MobilePopup = ({ onConfirm, onClose }) => {
               <input
                 type="tel"
                 value={phone}
-                onChange={(e) => setPhone(e.target.value.replace(/\D/g, ""))}
+                onChange={(e) => { setPhone(e.target.value.replace(/\D/g, "")); setError(""); }}
                 placeholder="11 99999-9999"
                 maxLength={11}
                 className="flex-1 bg-transparent px-4 py-3 font-general text-sm text-white placeholder-white/30 outline-none"
                 autoFocus
               />
             </div>
+
+            {error && (
+              <p className="text-center font-general text-xs text-red-400">{error}</p>
+            )}
 
             <button
               type="submit"

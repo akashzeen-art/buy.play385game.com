@@ -92,7 +92,7 @@ const NavBar = () => {
         <nav className="flex size-full items-center justify-between px-4 py-2 md:px-5">
           <div className="flex items-center gap-4">
             <Link to="/" className="shrink-0">
-              <img src="/52.png" alt="gamezone365" className="h-12 w-auto md:h-14" />
+              <img src="/52.png" alt="pixelarena" className="h-12 w-auto md:h-14" />
             </Link>
             <Link to="/games" className="hidden md:block">
               <Button
