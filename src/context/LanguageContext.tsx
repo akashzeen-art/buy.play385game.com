@@ -455,7 +455,7 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Lang>("en");
+  const [lang, setLang] = useState<Lang>("pt");
   return (
     <LanguageContext.Provider value={{ lang, setLang, t: translations[lang] }}>
       <div dir={lang === "ar" ? "rtl" : "ltr"}>{children}</div>
